@@ -7,6 +7,10 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
 
+//app.get("/", (req, res) => {
+ //   res.send("Hello, world!");
+ // });
+
 app.post("/checkout", async (req, res) =>{
 
     const items = req.body.items;
@@ -26,13 +30,9 @@ app.post("/checkout", async (req, res) =>{
         success_url: 'http://localhost:3000/success',
         cancel: 'http://localhost:3000/cancel',
     });
-
     res.send(JSON.stringify({
         url: session.url
-    }))
-
-
-
+    }));
 });
 
 app.listen(4000, ()=> console.log("listening"));
