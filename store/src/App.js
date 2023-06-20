@@ -1,5 +1,7 @@
 import Nav from './Nav.js';
 import './App.css';
+import kl9yhoodieFront from './imgs/products/9y-hoodie/KL9YHoodieBlackFront.jpg';
+import kl9yhoodieBack from './imgs/products/9y-hoodie/KL9YHoodieBlackBack.jpg';
 
 function App() {
   return (
@@ -30,7 +32,7 @@ function App() {
             
             
             <a class="imgA" href="https://kl9y.com/products/9y-hoodie"> 
-                <img alt='t' class="prod" src ={require("./imgs/products/9y-hoodie/KL9YHoodieBlackBack.jpg")} onmouseover="changeImageHover(this, 'imgs/products/9y-hoodie/KL9YHoodieBlackFront.jpg')" onmouseout="changeImageHover(this, 'imgs/products/9y-hoodie/KL9YHoodieBlackBack.jpg')"/>
+                <img alt='t' class="prod" src ={require("./imgs/products/9y-hoodie/KL9YHoodieBlackBack.jpg")} onMouseOver={e => (e.currentTarget.src = kl9yhoodieFront)} onMouseOut={e => (e.currentTarget.src = kl9yhoodieBack)}/>
                 <p class="listingName">9Y LOGO</p>
                 <p class="listingName">HOODIE</p>
                 <p class="listingName">$55</p>
