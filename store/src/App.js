@@ -8,7 +8,6 @@ import Store from './Store';
 
 function App() {
   return (
-      <Container>
         <BrowserRouter>
           <Routes>
             <Route index element={<Store />} />
@@ -16,8 +15,6 @@ function App() {
             <Route path="cancel" element={<Store />} />
           </Routes>
         </BrowserRouter>
-      </Container>
-
   );
 }
 

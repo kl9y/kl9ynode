@@ -5,13 +5,13 @@ import kl9yhoodieBack from './imgs/products/9y-hoodie/KL9YHoodieBlackBack.jpg';
 
 function Store() {
   return (
-    <body>
+    <>
         <div style={{ textAlign: "center", alignItems: "center", justifyContent: "center", display: "flex" }}>
              <video autoplay muted playsinline defaultMuted loop id="myVideo" style={{width: '110%', overflow: 'hidden'}}>
                  <source src={require('./imgs/WebVidBGLogo.mp4')} type="video/mp4"/>
              </video> 
          </div>
-
+ 
     <Nav></Nav>
 
         <div class="productLines">
@@ -89,7 +89,7 @@ function Store() {
 
 
         <div style={{marginBottom: '50rem'}}></div>
-    </body>
+    </>
   );
 }
 

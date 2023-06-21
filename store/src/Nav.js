@@ -1,5 +1,6 @@
 const Nav = () => {
-    return <div>
+    return (
+    <div>
          <nav>
     <div class="navbar">
       <div class="container nav-container">
@@ -51,6 +52,7 @@ const Nav = () => {
  </div>
     
          </div>
+    );
 }
 
 export default Nav
