@@ -1,15 +1,19 @@
 const express = require('express');
 var cors = require('cors');
 const stripe = require('stripe')(process.env.skey);
+const path = require('path');
 
 const app = express();
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'store/public')));
 app.use(express.json());
 
 //app.get("/", (req, res) => {
  //   res.send("Hello, world!");
  // });
+ app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'store/public/index.html'));
+  });
 
 app.post("/checkout", async (req, res) =>{
 
