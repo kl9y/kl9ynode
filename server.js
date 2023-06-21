@@ -32,7 +32,7 @@ app.use(express.json());
         line_items: lineItems,
         mode: 'payment',
         success_url: 'http://localhost:3000/success',
-        cancel: 'http://localhost:3000/cancel',
+        cancel_url: 'http://localhost:3000/cancel',
         submit_type: 'pay',
       });
   
