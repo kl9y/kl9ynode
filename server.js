@@ -20,7 +20,11 @@ app.post("/checkout", async (req, res) =>{
     const items = req.body.items;
     let lineItems = [];
     items.forEach((item) =>{
+        console.log(item.id);
+        console.log(item.quantity);
         lineItems.push(
+            
+
             {
                 price: item.id,
                 quantity: item.quantity
@@ -33,6 +37,7 @@ app.post("/checkout", async (req, res) =>{
         mode: 'payment',
         success_url: 'http://localhost:3000/success',
         cancel: 'http://localhost:3000/cancel',
+        submit_type: 'pay',
     });
     res.send(JSON.stringify({
         url: session.url
