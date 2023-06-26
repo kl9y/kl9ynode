@@ -2,8 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Store from './Store';
-// localhost:3000 -> Home
-// localhost:3000/success -> Success
+
 
 function App() {
   return (

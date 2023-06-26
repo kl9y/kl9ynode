@@ -20,8 +20,6 @@ app.use(express.json());
       const items = req.body.items;
       let lineItems = [];
       items.forEach((item) => {
-        console.log(item.id);
-        console.log(item.quantity);
         lineItems.push({
           price: item.id,
           quantity: item.quantity,
@@ -31,8 +29,8 @@ app.use(express.json());
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://localhost:3000/success',
-        cancel_url: 'http://localhost:3000/cancel',
+        success_url: 'http://kl9y.com/success',
+        cancel_url: 'http://kl9y.com/cancel',
         submit_type: 'pay',
       });
   
