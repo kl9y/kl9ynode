@@ -31,6 +31,15 @@ app.use(express.json());
         mode: 'payment',
         success_url: 'http://kl9y.com/success',
         cancel_url: 'http://kl9y.com/cancel',
+        currency: 3166,
+        payment_method_types: ['card'],
+        billing_address_collection: 'auto',
+        automatic_tax: {
+          enabled: true
+        },
+        shipping_address_collection: {
+          allowed_countries: ['US', 'CA']
+        },
         submit_type: 'pay',
       });
   
