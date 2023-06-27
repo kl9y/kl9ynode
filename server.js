@@ -25,27 +25,33 @@ app.use(express.json());
           quantity: item.quantity,
         });
       });
-  
-      const session = await stripe.checkout.sessions.create({
-        line_items: lineItems,
-        mode: 'payment',
-        success_url: 'http://kl9y.com/success',
-        cancel_url: 'http://kl9y.com/cancel',
-        currency: 'usd',
-        payment_method_types: ['card'],
-        billing_address_collection: 'auto',
-        automatic_tax: {
-          enabled: true
-        },
-        shipping_address_collection: {
-          allowed_countries: ['US', 'CA']
-        },
-        submit_type: 'pay',
-      });
-  
-      res.send(JSON.stringify({
-        url: session.url,
-      }));
+
+        if(lineItems.length >0){
+          const session = await stripe.checkout.sessions.create({
+            line_items: lineItems,
+            mode: 'payment',
+            success_url: 'http://kl9y.com/success',
+            cancel_url: 'http://kl9y.com/cancel',
+            currency: 'usd',
+            payment_method_types: ['card'],
+            billing_address_collection: 'auto',
+            automatic_tax: {
+              enabled: true
+            },
+            shipping_address_collection: {
+              allowed_countries: ['US', 'CA']
+            },
+            submit_type: 'pay',
+          });
+      
+          res.send(JSON.stringify({
+            url: session.url,
+          }));
+        }
+        else{
+          console.log("Empty Request.");
+          }
+      
     } catch (error) {
       console.error(error);
       res.status(500).send(JSON.stringify({
