@@ -1,6 +1,7 @@
 const express = require('express');
 var cors = require('cors');
-const stripe = require('stripe')(process.env.skey);
+//const stripe = require('stripe')(process.env.skey);
+const stripe = require('stripe')(process.env.testkey);
 const path = require('path');
 
 const app = express();
