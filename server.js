@@ -62,7 +62,7 @@ app.use(express.json());
   });
 
   app.get('/success', async (req, res) => {
-    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+    const session = await stripe.checkout.sessions.retrieve(req.body.items);
     const customer = await stripe.customers.retrieve(session.customer);
   
     res.send(JSON.stringify({
