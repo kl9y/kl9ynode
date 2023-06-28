@@ -31,7 +31,7 @@ app.use(express.json());
           const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://kl9y.com/success',
+            success_url: 'http://kl9y.com/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url: 'http://kl9y.com/cancel',
             currency: 'usd',
             payment_method_types: ['card'],
@@ -59,6 +59,13 @@ app.use(express.json());
         error: 'An error occurred while processing the payment.',
       }));
     }
+  });
+
+  app.get('/success', async (req, res) => {
+    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+    const customer = await stripe.customers.retrieve(session.customer);
+  
+    res.send(`<html><body><h1>Thanks for your order, ${customer.name}!</h1></body></html>`);
   });
 
 app.listen(4000, ()=> console.log("listening"));
