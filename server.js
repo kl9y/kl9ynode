@@ -2,6 +2,7 @@ const express = require('express');
 var cors = require('cors');
 //const stripe = require('stripe')(process.env.skey);
 const stripe = require('stripe')(process.env.testkey);
+
 const path = require('path');
 
 const app = express();
@@ -60,14 +61,37 @@ app.use(express.json());
       }));
     }
   });
-
+/*
   app.get('/success', async (req, res) => {
-    const session = await stripe.checkout.sessions.retrieve(req.body.items);
+    console.log("HERE");
+    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
     const customer = await stripe.customers.retrieve(session.customer);
   
     res.send(JSON.stringify({
       url: customer.name,
     }));
   });
+*/
+
+app.get('/success', async (req, res) => {
+  try {
+    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+    console.log(session);
+    const customerName = session.customer_details.name;
+    console.log("---------------------------------------");
+    console.log(customerName);
+
+    res.send(JSON.stringify({
+      custName: customerName,
+      ordPrice: session.amount_total,
+    }));
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(JSON.stringify({
+      error: 'An error occurred while retrieving the customer name.',
+    }));
+  }
+});
+
 
 app.listen(4000, ()=> console.log("listening"));
