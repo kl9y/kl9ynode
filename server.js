@@ -28,7 +28,7 @@ app.use(express.json());
         });
       });
 
-        if(lineItems.length >0){
+        if(lineItems.length >0 && lineItems.length <21){
           const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
