@@ -1,7 +1,7 @@
 const express = require('express');
 var cors = require('cors');
-//const stripe = require('stripe')(process.env.skey);
-const stripe = require('stripe')(process.env.testkey);
+const stripe = require('stripe')(process.env.skey);
+//const stripe = require('stripe')(process.env.testkey);
 
 const path = require('path');
 
@@ -10,9 +10,6 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'store/public')));
 app.use(express.json());
 
-//app.get("/", (req, res) => {
- //   res.send("Hello, world!");
- // });
  app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'store/public/index.html'));
   });
@@ -61,26 +58,12 @@ app.use(express.json());
       }));
     }
   });
-/*
-  app.get('/success', async (req, res) => {
-    console.log("HERE");
-    const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-    const customer = await stripe.customers.retrieve(session.customer);
-  
-    res.send(JSON.stringify({
-      url: customer.name,
-    }));
-  });
-*/
+
 
 app.get('/success', async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-    console.log(session);
     const customerName = session.customer_details.name;
-    console.log("---------------------------------------");
-    console.log(customerName);
-
     res.send(JSON.stringify({
       custName: customerName,
       ordPrice: session.amount_total,
