@@ -30,7 +30,7 @@ app.use(express.json());
             line_items: lineItems,
             mode: 'payment',
             success_url: 'http://kl9y.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'http://kl9y.com/cancel',
+            cancel_url: 'http://kl9y.com/cart',
             currency: 'usd',
             payment_method_types: ['card', "cashapp"],
             billing_address_collection: 'auto',
