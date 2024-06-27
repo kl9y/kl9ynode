@@ -34,7 +34,7 @@ app.use(express.json());
             success_url: 'http://kl9y.com/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url: 'http://kl9y.com/cart',
             currency: 'usd',
-            payment_method_types: ['card', "cashapp", "paypal", "amazon_pay"],
+            payment_method_types: ['card', "cashapp", "amazon_pay"],
             billing_address_collection: 'auto',
             automatic_tax: {
               enabled: false
