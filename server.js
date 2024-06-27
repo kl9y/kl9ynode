@@ -14,6 +14,8 @@ app.use(express.json());
     res.sendFile(path.join(__dirname, 'store/public/index.html'));
   });
 
+
+
   app.post("/checkout", async (req, res) => {
     try {
       const items = req.body.items;
@@ -29,17 +31,24 @@ app.use(express.json());
           const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://kl9y.com/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url: 'http://kl9y.com/cart',
             currency: 'usd',
             payment_method_types: ['card', "cashapp"],
             billing_address_collection: 'auto',
             automatic_tax: {
-              enabled: true
+              enabled: false
             },
             shipping_address_collection: {
-              allowed_countries: ['US', 'CA']
+              allowed_countries: ['US']
             },
+            shipping_options: [
+              {
+                shipping_rate: 'shr_1PW7ucCSLHJXbRq8viXaOOGt', // USPS Ground Advantage
+              },
+              {
+                shipping_rate: 'shr_1PW84UCSLHJXbRq86g3hmAfZ', // STAMPS
+              },
+            ],
             submit_type: 'pay',
           });
       
