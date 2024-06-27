@@ -47,7 +47,7 @@ app.use(express.json());
                 shipping_rate: 'shr_1PW7ucCSLHJXbRq8viXaOOGt', // USPS Ground Advantage
               },
               {
-                shipping_rate: 'shr_1PW84UCSLHJXbRq86g3hmAfZ', // STAMPS
+                shipping_rate: 'shr_1PWQB1CSLHJXbRq8YqOB5Y1Q', // STAMPS
               },
             ],
             submit_type: 'pay',
