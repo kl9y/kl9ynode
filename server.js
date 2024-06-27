@@ -31,9 +31,10 @@ app.use(express.json());
           const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
+            success_url: 'http://kl9y.com/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url: 'http://kl9y.com/cart',
             currency: 'usd',
-            payment_method_types: ['card', "cashapp"],
+            payment_method_types: ['card', "cashapp", "apple_pay", "google_pay"],
             billing_address_collection: 'auto',
             automatic_tax: {
               enabled: false
