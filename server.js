@@ -31,24 +31,25 @@ app.use(express.json());
           const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://kl9y.com/success?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url: 'http://kl9y.com/cart',
+            success_url: 'http://kalycards.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'http://kalycards.com/cart',
             currency: 'usd',
             payment_method_types: ['card', "cashapp", "amazon_pay"],
             billing_address_collection: 'auto',
             automatic_tax: {
-              enabled: false
+              enabled: true
             },
             shipping_address_collection: {
               allowed_countries: ['US']
             },
             shipping_options: [
               {
-                shipping_rate: 'shr_1PW7ucCSLHJXbRq8viXaOOGt', // USPS Ground Advantage
-              },
-              {
                 shipping_rate: 'shr_1PYe5bCSLHJXbRq8BBHBC8KP', // STAMPS
               },
+              {
+                shipping_rate: 'shr_1PW7ucCSLHJXbRq8viXaOOGt', // USPS Ground Advantage
+              },
+              
             ],
             submit_type: 'pay',
           });
