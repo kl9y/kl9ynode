@@ -52,6 +52,22 @@ app.use(express.json());
               
             ],
             submit_type: 'pay',
+
+            custom_fields: [
+              {
+                key: 'custom_text',
+                label: {
+                  type: 'custom',
+                  custom: 'Customizations'
+                },
+                type: 'text',
+                text: {
+                  placeholder: 'Enter customizations here',
+                },
+              }
+            ]
+
+
           });
       
           res.send(JSON.stringify({
