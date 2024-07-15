@@ -40,7 +40,7 @@ app.use(express.json());
               enabled: true
             },
             shipping_address_collection: {
-              allowed_countries: ['US']
+              allowed_countries: ['US', 'CA']
             },
             shipping_options: [
               {
