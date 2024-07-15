@@ -61,11 +61,10 @@ app.use(express.json());
                   custom: 'Customizations'
                 },
                 type: 'text',
-                text: {
-                  placeholder: 'Enter customizations here',
-                },
-              }
-            ]
+                optional: true,
+                
+              },
+            ],
 
 
           });
