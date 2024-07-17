@@ -62,6 +62,7 @@ app.use(express.json());
                 },
                 type: 'text',
                 optional: true,
+                allow_promotion_codes: true,
                 
               },
             ],
