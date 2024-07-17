@@ -52,6 +52,7 @@ app.use(express.json());
               
             ],
             submit_type: 'pay',
+            allow_promotion_codes: true,
 
             custom_fields: [
               {
@@ -62,7 +63,7 @@ app.use(express.json());
                 },
                 type: 'text',
                 optional: true,
-                allow_promotion_codes: true,
+                
                 
               },
             ],
