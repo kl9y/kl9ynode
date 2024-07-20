@@ -105,4 +105,22 @@ app.get('/success', async (req, res) => {
 });
 
 
+app.post('/usps-updates', (req, res) => {
+  try {
+      const trackingData = req.body; // USPS will send JSON data
+      console.log('USPS Tracking Update:', trackingData);
+
+      // Process the tracking data here
+      // For example, save it to a database, send notifications, etc.
+
+      res.sendStatus(200);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send(JSON.stringify({
+          error: 'An error occurred while processing the USPS tracking update.',
+      }));
+  }
+});
+
+
 app.listen(4000, ()=> console.log("listening"));
